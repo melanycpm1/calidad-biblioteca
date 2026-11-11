@@ -8,40 +8,14 @@ on:
     branches: [main]
 
 jobs:
-<<<<<<< HEAD
- build:
- runs-on: ubuntu-latest
- steps:
-  - name: Checkout
-    uses: actions/checkout@v4
-    with:
-     fetch-depth: 0
- - name: Set up JDK 17
- uses: actions/setup-java@v4
- with:
- java-version: '17'
- distribution: 'temurin'
- cache: maven
- - name: Build and test
- run: mvn -B clean verify
- - name: Check JaCoCo report
- run: |
- echo "Contenido de target/site/jacoco:"
- ls -lh target/site/jacoco/
- echo "Comprobando jacoco.xml..."
- test -f target/site/jacoco/jacoco.xml
- echo "jacoco.xml encontrado correctamente."
- - name: SonarQube Cloud analysis
- env:
- SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
- run: mvn -B sonar:sonar
-=======
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -65,4 +39,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B sonar:sonar
->>>>>>> ad259286cd72e8f8676a06a8e3bd50378a2029bf
+
