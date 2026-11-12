@@ -28,7 +28,11 @@ jobs:
         run: mvn -B clean verify
 
       - name: Check JaCoCo report
-        run: test -f target/site/jacoco/jacoco.xml
+        run: |
+          echo "Contenido de target/site/jacoco:"
+          ls -lh target/site/jacoco/
+          echo "Comprobando jacoco.xml..."
+          test -f target/site/jacoco/jacoco.xml
 
       - name: SonarQube Cloud analysis
         env:
